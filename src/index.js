@@ -1,12 +1,10 @@
-// @flow
-import React, { PropTypes } from 'react';
+import Wrapper from './Wrapper';
+import Provider from './Provider';
 
-const Starter = ({ title }: { title: string }) => (
-  <div>
-    <h1>{title}</h1>
-  </div>
-);
+const factory = props => ({
+  Name: 'DnD',
+  Wrapper,
+  Provider
+});
 
-export const OtherComp = () => <div>Hello there!</div>;
-
-export default Starter;
+export default factory;
