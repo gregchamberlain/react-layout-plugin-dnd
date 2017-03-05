@@ -8,10 +8,26 @@ var reactExternal = {
   amd: 'react'
 };
 
+var reactDnDExternal = {
+  root: 'ReactDnD',
+  commonjs2: 'react',
+  commonjs: 'react',
+  amd: 'react'
+};
+
+var reactBackendExternal = {
+  root: 'ReactDnDHTML5Backend',
+  commonjs2: 'react',
+  commonjs: 'react',
+  amd: 'react'
+};
+
 var config = {
   entry: './src/index',
   externals: {
     'react': reactExternal,
+    'react-dnd': reactDnDExternal,
+    'react-dnd-html5-backend': reactBackendExternal
   },
   module: {
     loaders: [

@@ -1,10 +1,13 @@
 {
   "name": "react-layout-plugin-dnd",
   "version": "0.1.0",
-  "description": "A simple responsive sidebar component for React",
+  "description": "A react-layout-core plugin, that turns evey layoutState item into a react-dnd DragSource",
   "keywords": [
     "react",
-    "react-component"
+    "react-component",
+    "react-layout",
+    "plugin",
+    "DnD"
   ],
   "main": "dist/bundle.js",
   "scripts": {
