@@ -19,8 +19,8 @@ var config = {
     ]
   },
   output: {
-    filename: 'dist/ReactComponentBoilerplate.min.js',
-    library: 'ReactComponentBoilerplate',
+    filename: 'dist/ReactLayoutPluginDnD.min.js',
+    library: 'ReactLayoutPluginDnD',
     libraryTarget: 'umd',
   },
   plugins: [
