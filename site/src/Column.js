@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DropTarget } from 'react-dnd';
-import { insertOrMoveItem } from 'react-layout-base/lib/plugins/Edit/actions';
+import { insertOrMoveItem } from 'react-layout-core/lib/plugins/Edit/actions';
 
 const target = {
   drop(props, monitor) {

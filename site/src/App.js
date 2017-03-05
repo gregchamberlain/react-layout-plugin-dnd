@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import { Layout, LayoutState } from 'react-layout-base';
+import { Layout, LayoutState } from 'react-layout-core';
 import DnD from '../../src'
-import Edit from 'react-layout-base/lib/plugins/Edit';
+import Edit from 'react-layout-core/lib/plugins/Edit';
 
 import Column from './Column';
 
