@@ -9,7 +9,7 @@
     "plugin",
     "DnD"
   ],
-  "main": "dist/bundle.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
     "lint": "eslint src",
