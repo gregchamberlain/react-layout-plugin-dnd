@@ -2,9 +2,6 @@
 import React, { Component } from 'react';
 import { Layout, LayoutState } from 'react-layout-core';
 import DnD from '../../src'
-import Edit from 'react-layout-core/lib/plugins/Edit';
-
-import Column from './Column';
 
 const getBG = () => {
   const r = Math.floor(Math.random() * 255);
@@ -14,7 +11,7 @@ const getBG = () => {
 }
 
 const getItem = () => ({
-  type: 'Column',
+  type: 'div',
   props: {
     style: { backgroundColor: getBG(), minHeight: 30, margin: 10 }
   },
@@ -54,8 +51,7 @@ class App extends Component {
         <Layout
           layoutState={this.state.layoutState}
           onChange={this.change}
-          components={{Column}}
-          plugins={[Edit, DnD]}
+          plugins={[DnD]}
         />
       </div>
     )
