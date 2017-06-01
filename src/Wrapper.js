@@ -33,13 +33,13 @@ const DnDWrapper = (WrappedComponent, displayName) => {
     }
 
     render() {
-      const { connectDragSource, isDragging, layoutState, pseudoRef, ...props } = this.props;
+      const { connectDragSource, isDragging, layoutState, dispatch, pseudoRef, ...props } = this.props;
       return (
         <WrappedComponent {...props} pseudoRef={instance => {
           const node = findDOMNode(instance);
           if (props.id !== 'root') connectDragSource(node);
           this.node = instance;
-          pseudoRef(instance);
+          (typeof pseudoRef === 'function') && pseudoRef(instance);
         }} />
       );
     }
