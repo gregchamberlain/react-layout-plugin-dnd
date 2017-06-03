@@ -7,7 +7,7 @@ const target = {
   drop(props, monitor) {
     if (!monitor.didDrop()) {
       const item = monitor.getItem();
-      props.moveItem(props.id, 0, item);
+      props.moveItem(props['data-id'], 0, item);
     }
   }
 }
