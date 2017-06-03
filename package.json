@@ -1,6 +1,6 @@
 {
   "name": "react-layout-plugin-dnd",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A react-layout-core plugin, that turns evey layoutState item into a react-dnd DragSource",
   "keywords": [
     "react",
@@ -52,7 +52,8 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.3.0",
     "react-hot-loader": "^3.0.0-beta.6",
-    "react-layout-core": "^0.3.0",
+    "react-layout-core": "^0.4.0",
+    "react-layout-plugin-refs": "^0.1.0",
     "react-redux": "^5.0.3",
     "react-test-renderer": "^15.4.2",
     "webpack": "^2.2.0",

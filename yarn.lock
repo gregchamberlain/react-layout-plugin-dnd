@@ -3811,9 +3811,9 @@ react-hot-loader@^3.0.0-beta.6:
     redbox-react "^1.2.5"
     source-map "^0.4.4"
 
-react-layout-core@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-layout-core/-/react-layout-core-0.3.0.tgz#07c9c6ade5abd9dc2fdf5d0dc6799150769ff662"
+react-layout-core@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-layout-core/-/react-layout-core-0.4.0.tgz#3dd260b577ed9619135f2e31896354b920558845"
   dependencies:
     hoist-non-react-statics "^1.2.0"
     immutability-helper "^2.1.2"
@@ -3821,6 +3821,12 @@ react-layout-core@^0.3.0:
     prop-types "^15.5.10"
     react-redux "^5.0.3"
     redux "^3.6.0"
+
+react-layout-plugin-refs@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-layout-plugin-refs/-/react-layout-plugin-refs-0.1.0.tgz#1446a5d0ae8f9f138f78ac1b1266a6e7a7b77898"
+  dependencies:
+    hoist-non-react-statics "^1.2.0"
 
 react-proxy@^3.0.0-alpha.0:
   version "3.0.0-alpha.1"

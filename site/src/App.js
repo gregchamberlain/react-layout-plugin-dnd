@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 import { Layout, LayoutState } from 'react-layout-core';
+import Refs from 'react-layout-plugin-refs';
+
 import DnD from '../../src'
 
 const getBG = () => {
@@ -51,7 +53,7 @@ class App extends Component {
         <Layout
           layoutState={this.state.layoutState}
           onChange={this.change}
-          plugins={[DnD]}
+          plugins={[Refs, DnD]}
         />
       </div>
     )

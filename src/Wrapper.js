@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 
 const source = {
   beginDrag(props) {
-    return props.layoutState.getItem(props.id);
+    console.log(props['data-id'])
+    return props.layoutState.getItem(props['data-id']);
   }
 };
 
