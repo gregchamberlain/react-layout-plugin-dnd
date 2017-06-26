@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connectLayout } from 'react-layout-core';
 import { DropTarget } from 'react-dnd';
 import { insertOrMoveItem } from 'react-layout-core/lib/plugins/Edit/actions';
 
@@ -45,4 +45,4 @@ const droppable = DropTarget('Component', target, (conn, monitor) => ({
   isOver: monitor.isOver({ shallow: true })
 }))(Column);
 
-export default connect(null, mapDispatchToProps)(droppable);
+export default connectLayout(null, mapDispatchToProps)(droppable);
