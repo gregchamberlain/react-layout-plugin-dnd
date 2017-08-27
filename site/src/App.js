@@ -2,8 +2,11 @@
 import React, { Component } from 'react';
 import { Layout, LayoutState } from 'react-layout-core';
 import Refs from 'react-layout-plugin-refs';
+import Edit, { actions } from 'react-layout-plugin-edit';
 
 import DnD from '../../src'
+
+import Column from './Column';
 
 const getBG = () => {
   const r = Math.floor(Math.random() * 255);
@@ -13,25 +16,32 @@ const getBG = () => {
 }
 
 const getItem = () => ({
-  type: 'div',
+  type: 'Column',
   props: {
-    style: { backgroundColor: getBG(), minHeight: 30, margin: 10 }
+    style: { backgroundColor: getBG(), padding: 15, margin: 10 }
   },
   children: []
 })
 
-class App extends Component {
+type Props = {
 
-  state: {
-    layoutState: LayoutState
-  }
+};
 
+type State = {
+  layoutState: LayoutState
+};
+
+const components = {
+  Column
+};
+
+class App extends Component<Props, State> {
+  
   constructor() {
     super();
-    let layoutState = new LayoutState('div');
-    layoutState = layoutState.insertOrMoveItem('root', 0, getItem());
-    const lastItem = layoutState.items.toArray().filter(item => item.id !== 'root')[0].id;
-    layoutState = layoutState.insertOrMoveItem(lastItem, 0, getItem());
+    let layoutState = new LayoutState('Column');
+    layoutState = actions.insertItem(layoutState, { item: layoutState.createItem(getItem()), parentKey: LayoutState.ROOT_KEY, index: 0 });
+    layoutState = actions.insertItem(layoutState, { item: layoutState.createItem(getItem()), parentKey: LayoutState.ROOT_KEY, index: 0 });
     this.state = {
       layoutState: layoutState
     };
@@ -41,19 +51,14 @@ class App extends Component {
     this.setState({ layoutState });
   }
 
-  addItem = () => {
-    let layoutState = this.state.layoutState.insertOrMoveItem('root', 0, getItem());
-    this.setState({ layoutState });
-  }
-
   render() {
     return (
       <div>
-        <button onClick={this.addItem}>Add Item</button>
         <Layout
           layoutState={this.state.layoutState}
           onChange={this.change}
-          plugins={[Refs, DnD]}
+          plugins={[Edit, Refs, DnD]}
+          components={components}
         />
       </div>
     )

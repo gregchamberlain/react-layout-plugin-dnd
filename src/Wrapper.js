@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource } from 'react-dnd';
-import { connectLayout } from 'react-layout-core';
+import { withLayoutState, LayoutState } from 'react-layout-core';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 const source = {
   beginDrag(props) {
-    return props.layoutState.getItem(props['data-id']);
+    return { key: props['data-id'] };
   }
 };
 
@@ -33,11 +33,11 @@ const DnDWrapper = (WrappedComponent, displayName) => {
     }
 
     render() {
-      const { connectDragSource, isDragging, layoutState, dispatch, pseudoRef, ...props } = this.props;
+      const { connectDragSource, isDragging, layoutState, pseudoRef, ...props } = this.props;
       return (
         <WrappedComponent {...props} pseudoRef={instance => {
           const node = findDOMNode(instance);
-          if (props.id !== 'root') connectDragSource(node);
+          if (props['data-id'] !== LayoutState.ROOT_KEY) connectDragSource(node);
           this.node = instance;
           (typeof pseudoRef === 'function') && pseudoRef(instance);
         }} />
@@ -48,9 +48,7 @@ const DnDWrapper = (WrappedComponent, displayName) => {
   DnD.displayName = `DnDWrapper(${displayName})`
   hoistNonReactStatic(DnD, WrappedComponent);
 
-  const mapStateToProps = ({ layoutState }) => ({ layoutState });
-
-  return connectLayout(mapStateToProps)(DragSource('Component', source, (conn, monitor) => ({
+  return withLayoutState(DragSource('Component', source, (conn, monitor) => ({
     connectDragSource: conn.dragSource(),
     isDragging: monitor.isDragging()
   }))(DnD))

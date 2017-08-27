@@ -1,10 +1,8 @@
 import Wrapper from './Wrapper';
 import Provider from './Provider';
 
-const factory = props => ({
+export default {
   Name: 'DnD',
   Wrapper,
   Provider
-});
-
-export default factory;
+};

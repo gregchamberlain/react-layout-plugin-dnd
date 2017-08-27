@@ -1,13 +1,17 @@
 import React from 'react';
 import { connectLayout } from 'react-layout-core';
 import { DropTarget } from 'react-dnd';
-import { insertOrMoveItem } from 'react-layout-core/lib/plugins/Edit/actions';
+import { actions, withEditLayoutState } from 'react-layout-plugin-edit';
 
 const target = {
   drop(props, monitor) {
     if (!monitor.didDrop()) {
-      const item = monitor.getItem();
-      props.moveItem(props['data-id'], 0, item);
+      const key = monitor.getItem().key;
+      props.onChange(actions.moveItem(props.layoutState, {
+        itemKey: key,
+        parentKey: props['data-id'],
+        index: 0
+      }));
     }
   }
 }
@@ -19,15 +23,15 @@ const Column = ({ connectDropTarget, children, isOver, ...props }) => connectDro
   </div>
 );
 
-const style = ({ style }) => ({
+const style = ({ style = {} }) => ({
   container: {
-    padding: 20,
-    margin: 20,
+    padding: 15,
+    margin: 5,
     backgroundColor: style.backgroundColor,
     position: 'relative'
   },
   overlay: {
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -36,13 +40,9 @@ const style = ({ style }) => ({
   }
 });
 
-const mapDispatchToProps = dispatch => ({
-  moveItem: (parent, idx, item) => dispatch(insertOrMoveItem(parent, idx, item))
-});
-
 const droppable = DropTarget('Component', target, (conn, monitor) => ({
   connectDropTarget: conn.dropTarget(),
   isOver: monitor.isOver({ shallow: true })
 }))(Column);
 
-export default connectLayout(null, mapDispatchToProps)(droppable);
+export default withEditLayoutState(droppable);
